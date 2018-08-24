@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, AppRegistry } from 'react-native';
-import {StackNavigator} from 'react-navigation'
+import {createStackNavigator} from 'react-navigation'
 
 import Viewer from './components/Viewer'
 
@@ -25,20 +25,21 @@ class App extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
+    console.log(this.state.data[1])
     return (
       <View style={styles.container}>
         <FlatList 
           data={this.state.data}
           keyExtractor={item => item.name}
           renderItem={({ item }) => 
-            <View><TouchableOpacity onPress={() => navigate('Viewer', {name: item.items })} >
+            <View>
+              <TouchableOpacity onPress={() => navigate('Viewer', {name: item.name })} >
                 <Text style={styles.size}>{item.name}</Text>
               </TouchableOpacity>
             </View> }
         />
       </View>
     );
-    //console.log(item)
   }
 }
 
@@ -55,9 +56,14 @@ const styles = StyleSheet.create({
   }
 });
 
-const myscreens= StackNavigator({
-  Home: { screen: App },
-  Viewer: { screen: Viewer },
-  });
+const myscreens= createStackNavigator(
+  {
+    Home: { screen: App },
+    Viewer: { screen: Viewer },
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
 
   export default myscreens;

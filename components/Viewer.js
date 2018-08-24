@@ -8,23 +8,26 @@ export default class Viewer extends React.Component {
   static navigationOptions = {
     title: 'Person Viewer',
     headerStyle: {
-    backgroundColor: '#212121',
+      backgroundColor: '#212121',
     },
     headerTitleStyle: {
-    color: '#fff'
+      color: '#fff'
     }
-    };
+  };
 
   constructor(props) {
     super(props)
     }
 
   render() {
-    //console.log({this.props.navigation.state.params.name})
-    //const {params} = this.props.navigation.state.params.name;
+    const { navigation } = this.props;
+    const name = navigation.getParam('name', 'NO-NAME');
+    //Check to make sure params were sent
+    console.log(name)
+    //Display the String that was passed to the route
     return (
       <View style={styles.container}>
-        <Text style={styles.size}>{this.props.navigation.state.params.name}</Text>
+        <Text style={styles.size}>{name}</Text>
       </View>
     );
   }
@@ -39,6 +42,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   size: {
-    fontSize: 60
+    fontSize: 150
   }
 });
