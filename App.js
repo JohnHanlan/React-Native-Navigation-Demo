@@ -4,7 +4,7 @@ import {StackNavigator} from 'react-navigation'
 
 import Viewer from './components/Viewer'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   static navigationOptions = {
     title: 'Home',
@@ -16,8 +16,8 @@ export default class App extends React.Component {
     }
     };
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       data: [{ name: 'Dave' }, { name: 'Bob' }],
     }
@@ -38,6 +38,7 @@ export default class App extends React.Component {
         />
       </View>
     );
+    //console.log(item)
   }
 }
 
@@ -59,4 +60,4 @@ const myscreens= StackNavigator({
   Viewer: { screen: Viewer },
   });
 
-AppRegistry.registerComponent('navtwo', () => myscreens)
+  export default myscreens;

@@ -20,6 +20,8 @@ export default class Viewer extends React.Component {
     }
 
   render() {
+    //console.log({this.props.navigation.state.params.name})
+    //const {params} = this.props.navigation.state.params.name;
     return (
       <View style={styles.container}>
         <Text style={styles.size}>{this.props.navigation.state.params.name}</Text>
