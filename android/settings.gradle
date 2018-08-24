@@ -1,0 +1,3 @@
+rootProject.name = 'navtwo'
+
+include ':app'
